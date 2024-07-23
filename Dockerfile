@@ -1,6 +1,6 @@
 FROM openjdk:22-jdk AS build 
 COPY . .
-RUN mvn package -DskipTest
+RUN mvn clean package -DskipTest
 
 FROM openjdk:22-jdk-slim 
 COPY --from=build /target/demo-0.0.1-SNAPSHOT.jar demo.jar 
