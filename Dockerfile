@@ -1,8 +1,5 @@
-FROM openjdk:22-jdk AS build
-COPY . .
-RUN mvn clean package -DskipTests
-
-FROM openjdk:22-jdk-slim
-COPY --from=build /target/demo-0.0.1-SNAPSHOT.jar demo.jar
+FROM openjdk:22-jdk 
+WORKDIR /app
+COPY ${JAR_FILE} app.jar
 EXPOSE 8080
-ENTRYPOINT [ "java","-jar","demo-jar" ]
+CMD [ "java", "-jar", "demo-0.0.1-SNAPSHOT.jar" ]
