@@ -1,5 +1,5 @@
 FROM maven:3-openjdk-17 AS build
-COPY . . 
+COPY . .
 RUN mvn clean package -DskipTests
 
 FROM maven:3.6.3-openjdk-17-slim
